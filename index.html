@@ -1,0 +1,1824 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Bermud Jewellery</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: #f8f7f3;
+    color: #151515;
+    font-family: Inter, Arial, sans-serif;
+}
+
+button,
+input,
+select,
+textarea {
+    font-family: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+/* TOP */
+
+.top {
+    background: #111;
+    color: white;
+    text-align: center;
+    padding: 9px;
+    font-size: 10px;
+    letter-spacing: 2px;
+}
+
+/* HEADER */
+
+header {
+    height: 82px;
+    background: #f8f7f3;
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 5%;
+    position: sticky;
+    top: 0;
+    z-index: 30;
+}
+
+.logo {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 29px;
+    letter-spacing: 7px;
+}
+
+nav {
+    display: flex;
+    gap: 30px;
+}
+
+nav a {
+    font-size: 11px;
+    letter-spacing: 1px;
+}
+
+.actions {
+    display: flex;
+    gap: 15px;
+}
+
+.action {
+    border: 0;
+    background: transparent;
+    font-size: 20px;
+    position: relative;
+}
+
+.badge {
+    position: absolute;
+    top: -7px;
+    right: -7px;
+    width: 16px;
+    height: 16px;
+    background: #111;
+    color: white;
+    border-radius: 50%;
+    font-size: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* HERO */
+
+.hero {
+    height: 650px;
+    background:
+        linear-gradient(rgba(0,0,0,.18), rgba(0,0,0,.18)),
+        url("https://images.unsplash.com/photo-1611652022419-a9419f74343d?auto=format&fit=crop&w=1800&q=85")
+        center / cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+}
+
+.hero-small {
+    font-size: 10px;
+    letter-spacing: 5px;
+    margin-bottom: 20px;
+}
+
+.hero h1 {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 90px;
+    font-weight: 400;
+    letter-spacing: 17px;
+}
+
+.hero p {
+    font-size: 12px;
+    letter-spacing: 4px;
+    margin: 15px 0 30px;
+}
+
+.hero-button {
+    display: inline-block;
+    background: white;
+    color: #111;
+    padding: 15px 28px;
+    font-size: 10px;
+    letter-spacing: 2px;
+}
+
+/* GENERAL */
+
+.section {
+    padding: 90px 5%;
+}
+
+.title {
+    text-align: center;
+    margin-bottom: 45px;
+}
+
+.title span {
+    font-size: 9px;
+    letter-spacing: 4px;
+    color: #666;
+}
+
+.title h2 {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 52px;
+    font-weight: 400;
+    margin-top: 10px;
+}
+
+/* CATEGORIES */
+
+.categories {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+}
+
+.category {
+    height: 400px;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.category img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: .5s;
+}
+
+.category:hover img {
+    transform: scale(1.04);
+}
+
+.category-name {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 35px 20px;
+    text-align: center;
+    color: white;
+    background: linear-gradient(transparent, rgba(0,0,0,.65));
+    font-family: "Cormorant Garamond", serif;
+    font-size: 30px;
+}
+
+/* SHOP */
+
+.shop {
+    background: white;
+}
+
+.toolbar {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 35px;
+    gap: 20px;
+}
+
+.search {
+    width: 280px;
+    border: 0;
+    border-bottom: 1px solid #aaa;
+    padding: 12px 0;
+    background: transparent;
+    outline: none;
+}
+
+.filter {
+    border: 0;
+    border-bottom: 1px solid #aaa;
+    background: transparent;
+    padding: 12px;
+    outline: none;
+}
+
+.products {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+}
+
+.product-image {
+    height: 410px;
+    background: #eee;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+}
+
+.product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: .5s;
+}
+
+.product-image:hover img {
+    transform: scale(1.04);
+}
+
+.heart {
+    position: absolute;
+    right: 14px;
+    top: 14px;
+    width: 35px;
+    height: 35px;
+    border: 0;
+    border-radius: 50%;
+    background: rgba(255,255,255,.9);
+    z-index: 2;
+    font-size: 17px;
+}
+
+.product-info {
+    padding: 15px 0 25px;
+}
+
+.product-category {
+    color: #777;
+    font-size: 9px;
+    letter-spacing: 2px;
+}
+
+.product-name {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 24px;
+    margin-top: 5px;
+}
+
+.price {
+    font-size: 12px;
+    margin-top: 6px;
+}
+
+.add {
+    width: 100%;
+    border: 1px solid #111;
+    background: #111;
+    color: white;
+    padding: 14px;
+    margin-top: 14px;
+    font-size: 9px;
+    letter-spacing: 2px;
+}
+
+.add:hover {
+    background: white;
+    color: #111;
+}
+
+/* ABOUT */
+
+.about {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.about-image {
+    min-height: 550px;
+    background:
+        url("https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=1200&q=85")
+        center / cover;
+}
+
+.about-text {
+    background: #eceae4;
+    padding: 12%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.about-text span {
+    font-size: 9px;
+    letter-spacing: 4px;
+}
+
+.about-text h2 {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 55px;
+    font-weight: 400;
+    margin: 15px 0;
+}
+
+.about-text p {
+    font-size: 12px;
+    line-height: 2;
+    color: #555;
+}
+
+/* FOOTER */
+
+footer {
+    background: #111;
+    color: white;
+    padding: 65px 5%;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 40px;
+}
+
+.footer-logo {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 32px;
+    letter-spacing: 7px;
+}
+
+footer h4 {
+    font-size: 9px;
+    letter-spacing: 2px;
+    margin-bottom: 18px;
+}
+
+footer a {
+    display: block;
+    color: #aaa;
+    font-size: 11px;
+    margin: 11px 0;
+}
+
+.copyright {
+    border-top: 1px solid #333;
+    margin-top: 45px;
+    padding-top: 20px;
+    color: #777;
+    font-size: 9px;
+}
+
+/* CART */
+
+.overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.45);
+    z-index: 100;
+    display: none;
+}
+
+.overlay.show {
+    display: block;
+}
+
+.cart {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 430px;
+    max-width: 100%;
+    height: 100%;
+    background: #f8f7f3;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+}
+
+.cart-header {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 20px;
+}
+
+.cart-header h2 {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 35px;
+    font-weight: 400;
+}
+
+.close {
+    border: 0;
+    background: transparent;
+    font-size: 25px;
+}
+
+.cart-list {
+    flex: 1;
+    overflow-y: auto;
+}
+
+.cart-item {
+    display: grid;
+    grid-template-columns: 75px 1fr;
+    gap: 15px;
+    padding: 18px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.cart-item img {
+    width: 75px;
+    height: 90px;
+    object-fit: cover;
+}
+
+.cart-name {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 20px;
+}
+
+.cart-price {
+    font-size: 11px;
+    margin-top: 5px;
+}
+
+.quantity {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.quantity button {
+    width: 24px;
+    height: 24px;
+    border: 1px solid #ccc;
+    background: white;
+}
+
+.delete {
+    border: 0;
+    background: transparent;
+    color: #777;
+    font-size: 9px;
+    margin-top: 8px;
+}
+
+.cart-bottom {
+    border-top: 1px solid #ddd;
+    padding-top: 20px;
+}
+
+.total {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 18px;
+    font-size: 13px;
+}
+
+.checkout-button {
+    width: 100%;
+    border: 0;
+    background: #111;
+    color: white;
+    padding: 17px;
+    font-size: 9px;
+    letter-spacing: 2px;
+}
+
+/* MODAL */
+
+.modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.55);
+    z-index: 120;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.modal.show {
+    display: flex;
+}
+
+/* PRODUCT DETAIL */
+
+.detail {
+    background: #f8f7f3;
+    width: 900px;
+    max-width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    max-height: 90vh;
+    overflow: auto;
+}
+
+.detail-image {
+    height: 620px;
+}
+
+.detail-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.detail-content {
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.detail-content small {
+    letter-spacing: 3px;
+    color: #777;
+}
+
+.detail-content h2 {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 50px;
+    font-weight: 400;
+    margin: 10px 0;
+}
+
+.detail-content p {
+    font-size: 12px;
+    line-height: 1.9;
+    color: #666;
+    margin: 20px 0 30px;
+}
+
+/* CHECKOUT */
+
+.checkout {
+    width: 600px;
+    max-width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    background: #f8f7f3;
+    padding: 40px;
+}
+
+.checkout h2 {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 42px;
+    font-weight: 400;
+    margin-bottom: 25px;
+}
+
+.form {
+    margin-bottom: 17px;
+}
+
+.form label {
+    display: block;
+    font-size: 9px;
+    letter-spacing: 1px;
+    margin-bottom: 7px;
+}
+
+.form input,
+.form textarea {
+    width: 100%;
+    padding: 13px;
+    border: 1px solid #ccc;
+    outline: none;
+    background: white;
+}
+
+.form textarea {
+    min-height: 90px;
+    resize: vertical;
+}
+
+.confirm {
+    width: 100%;
+    border: 0;
+    background: #111;
+    color: white;
+    padding: 17px;
+    font-size: 9px;
+    letter-spacing: 2px;
+}
+
+/* SUCCESS */
+
+.success {
+    text-align: center;
+    padding: 50px 10px;
+}
+
+.success h2 {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 43px;
+    font-weight: 400;
+}
+
+.order-number {
+    margin: 20px 0;
+    font-size: 12px;
+    letter-spacing: 2px;
+}
+
+/* MOBILE */
+
+@media(max-width: 900px) {
+
+    nav {
+        display: none;
+    }
+
+    .hero h1 {
+        font-size: 60px;
+        letter-spacing: 10px;
+    }
+
+    .categories,
+    .products {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .about {
+        grid-template-columns: 1fr;
+    }
+
+    .about-image {
+        min-height: 450px;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .detail {
+        grid-template-columns: 1fr;
+    }
+
+    .detail-image {
+        height: 400px;
+    }
+}
+
+@media(max-width: 550px) {
+
+    header {
+        padding: 0 18px;
+    }
+
+    .logo {
+        font-size: 21px;
+        letter-spacing: 5px;
+    }
+
+    .section {
+        padding: 65px 18px;
+    }
+
+    .hero {
+        height: 540px;
+    }
+
+    .hero h1 {
+        font-size: 42px;
+        letter-spacing: 6px;
+    }
+
+    .categories,
+    .products {
+        gap: 12px;
+    }
+
+    .category {
+        height: 300px;
+    }
+
+    .product-image {
+        height: 270px;
+    }
+
+    .product-name {
+        font-size: 20px;
+    }
+
+    .toolbar {
+        flex-direction: column;
+    }
+
+    .search {
+        width: 100%;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .cart {
+        padding: 25px 20px;
+    }
+
+    .detail-content {
+        padding: 30px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="top">
+    BERMUD JEWELLERY · ZƏRİFLİYİN ÖZ FORMASI
+</div>
+
+<header>
+
+    <div class="logo">BERMUD</div>
+
+    <nav>
+        <a href="#shop">MAĞAZA</a>
+        <a href="#categories">KATEQORİYALAR</a>
+        <a href="#about">HAQQIMIZDA</a>
+        <a href="#contact">ƏLAQƏ</a>
+    </nav>
+
+    <div class="actions">
+
+        <button class="action" onclick="openSearch()">⌕</button>
+
+        <button class="action" onclick="openCart()">
+            ♡
+            <span class="badge" id="favCount">0</span>
+        </button>
+
+        <button class="action" onclick="openCart()">
+            🛍
+            <span class="badge" id="cartCount">0</span>
+        </button>
+
+    </div>
+
+</header>
+
+<section class="hero">
+
+    <div>
+
+        <div class="hero-small">
+            BERMUD JEWELLERY
+        </div>
+
+        <h1>BERMUD</h1>
+
+        <p>ZƏRİFLİYİN ÖZ FORMASI</p>
+
+        <a href="#shop" class="hero-button">
+            KOLLEKSİYANI KƏŞF ET
+        </a>
+
+    </div>
+
+</section>
+
+<section class="section" id="categories">
+
+    <div class="title">
+
+        <span>KATEQORİYALAR</span>
+
+        <h2>Seçilmiş zəriflik</h2>
+
+    </div>
+
+    <div class="categories">
+
+        <div class="category" onclick="chooseCategory('Üzüklər')">
+            <img src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&w=900&q=85">
+            <div class="category-name">Üzüklər</div>
+        </div>
+
+        <div class="category" onclick="chooseCategory('Sırğalar')">
+            <img src="https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&w=900&q=85">
+            <div class="category-name">Sırğalar</div>
+        </div>
+
+        <div class="category" onclick="chooseCategory('Boyunbağılar')">
+            <img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=900&q=85">
+            <div class="category-name">Boyunbağılar</div>
+        </div>
+
+        <div class="category" onclick="chooseCategory('Bilərziklər')">
+            <img src="https://images.unsplash.com/photo-1619119069152-a2b331eb392a?auto=format&fit=crop&w=900&q=85">
+            <div class="category-name">Bilərziklər</div>
+        </div>
+
+    </div>
+
+</section>
+
+<section class="section shop" id="shop">
+
+    <div class="title">
+
+        <span>BERMUD COLLECTION</span>
+
+        <h2>Kolleksiya</h2>
+
+    </div>
+
+    <div class="toolbar">
+
+        <input
+            id="searchInput"
+            class="search"
+            type="text"
+            placeholder="Məhsul axtar..."
+            oninput="renderProducts()"
+        >
+
+        <select
+            id="categorySelect"
+            class="filter"
+            onchange="renderProducts()"
+        >
+
+            <option value="Hamısı">Bütün məhsullar</option>
+            <option value="Üzüklər">Üzüklər</option>
+            <option value="Sırğalar">Sırğalar</option>
+            <option value="Boyunbağılar">Boyunbağılar</option>
+            <option value="Bilərziklər">Bilərziklər</option>
+
+        </select>
+
+    </div>
+
+    <div class="products" id="products"></div>
+
+</section>
+
+<section class="about" id="about">
+
+    <div class="about-image"></div>
+
+    <div class="about-text">
+
+        <span>BERMUD JEWELLERY</span>
+
+        <h2>Zəriflik detallarda yaşayır.</h2>
+
+        <p>
+            Bermud Jewellery müasir zərgərlik anlayışını
+            zamansız dizayn və incə detallar ilə birləşdirir.
+            Hər bir parça öz formasına və xarakterinə malikdir.
+        </p>
+
+    </div>
+
+</section>
+
+<footer id="contact">
+
+    <div class="footer-grid">
+
+        <div>
+            <div class="footer-logo">BERMUD</div>
+            <p style="color:#777;font-size:11px;margin-top:15px;">
+                Zərifliyin öz forması.
+            </p>
+        </div>
+
+        <div>
+            <h4>MAĞAZA</h4>
+            <a href="#shop">Bütün məhsullar</a>
+            <a href="#categories">Kateqoriyalar</a>
+        </div>
+
+        <div>
+            <h4>MƏLUMAT</h4>
+            <a href="#">Haqqımızda</a>
+            <a href="#">Çatdırılma</a>
+            <a href="#">Qaytarılma</a>
+            <a href="#">FAQ</a>
+        </div>
+
+        <div>
+            <h4>ƏLAQƏ</h4>
+            <a href="https://instagram.com/bermud_jewellery">
+                Instagram
+            </a>
+            <a href="#">WhatsApp</a>
+        </div>
+
+    </div>
+
+    <div class="copyright">
+        © 2026 Bermud Jewellery. Bütün hüquqlar qorunur.
+    </div>
+
+</footer>
+
+
+<!-- SƏBƏT -->
+
+<div class="overlay" id="cartOverlay">
+
+    <div class="cart">
+
+        <div class="cart-header">
+
+            <h2>Səbət</h2>
+
+            <button class="close" onclick="closeCart()">×</button>
+
+        </div>
+
+        <div class="cart-list" id="cartList"></div>
+
+        <div class="cart-bottom">
+
+            <div class="total">
+                <span>Ümumi məbləğ</span>
+                <strong id="totalPrice">0 AZN</strong>
+            </div>
+
+            <button class="checkout-button" onclick="openCheckout()">
+                SİFARİŞİ RƏSMİLƏŞDİR
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- MƏHSUL -->
+
+<div class="modal" id="productModal">
+
+    <div class="detail">
+
+        <div class="detail-image">
+            <img id="detailImg" src="" alt="">
+        </div>
+
+        <div class="detail-content">
+
+            <small id="detailCategory"></small>
+
+            <h2 id="detailName"></h2>
+
+            <strong id="detailPrice"></strong>
+
+            <p>
+                Zərif və müasir dizaynı ilə seçilən
+                Bermud Jewellery parçası. Məhsulun
+                detalları və material məlumatları daha
+                sonra əlavə edilə bilər.
+            </p>
+
+            <button class="add" id="detailButton">
+                SƏBƏTƏ ƏLAVƏ ET
+            </button>
+
+            <button
+                class="close"
+                onclick="closeProduct()"
+                style="margin-top:20px;font-size:11px;"
+            >
+                BAĞLA
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- SİFARİŞ -->
+
+<div class="modal" id="checkoutModal">
+
+    <div class="checkout">
+
+        <div style="
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+        ">
+
+            <h2>Sifariş</h2>
+
+            <button class="close" onclick="closeCheckout()">×</button>
+
+        </div>
+
+        <form onsubmit="submitOrder(event)">
+
+            <div class="form">
+                <label>AD</label>
+                <input id="firstName" required>
+            </div>
+
+            <div class="form">
+                <label>SOYAD</label>
+                <input id="lastName" required>
+            </div>
+
+            <div class="form">
+                <label>TELEFON</label>
+                <input id="phone" type="tel" placeholder="+994" required>
+            </div>
+
+            <div class="form">
+                <label>ŞƏHƏR</label>
+                <input id="city" required>
+            </div>
+
+            <div class="form">
+                <label>ÜNVAN</label>
+                <textarea id="address" required></textarea>
+            </div>
+
+            <div class="form">
+                <label>ƏLAVƏ QEYD</label>
+                <textarea id="note"></textarea>
+            </div>
+
+            <button class="confirm">
+                SİFARİŞİ TƏSDİQLƏ
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<!-- AXTARIŞ -->
+
+<div class="modal" id="searchModal">
+
+    <div style="
+        background:#f8f7f3;
+        width:550px;
+        max-width:100%;
+        padding:40px;
+    ">
+
+        <div style="
+            display:flex;
+            justify-content:space-between;
+        ">
+
+            <h2 style="
+                font-family:'Cormorant Garamond',serif;
+                font-size:40px;
+                font-weight:400;
+            ">
+                Axtarış
+            </h2>
+
+            <button class="close" onclick="closeSearch()">×</button>
+
+        </div>
+
+        <input
+            id="searchModalInput"
+            oninput="modalSearch()"
+            placeholder="Məhsul axtar..."
+            style="
+                width:100%;
+                border:0;
+                border-bottom:1px solid #999;
+                background:transparent;
+                padding:15px 0;
+                margin-top:30px;
+                outline:none;
+            "
+        >
+
+    </div>
+
+</div>
+
+
+<script>
+
+/* MƏHSULLAR */
+
+const products = [
+
+    {
+        id: 1,
+        name: "Aurelia Ring",
+        price: 89,
+        category: "Üzüklər",
+        image: "https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&w=900&q=85"
+    },
+
+    {
+        id: 2,
+        name: "Élan Earrings",
+        price: 119,
+        category: "Sırğalar",
+        image: "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&w=900&q=85"
+    },
+
+    {
+        id: 3,
+        name: "Noir Necklace",
+        price: 149,
+        category: "Boyunbağılar",
+        image: "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=900&q=85"
+    },
+
+    {
+        id: 4,
+        name: "Lumière Bracelet",
+        price: 129,
+        category: "Bilərziklər",
+        image: "https://images.unsplash.com/photo-1619119069152-a2b331eb392a?auto=format&fit=crop&w=900&q=85"
+    },
+
+    {
+        id: 5,
+        name: "Sculpt Ring",
+        price: 99,
+        category: "Üzüklər",
+        image: "https://images.unsplash.com/photo-1603561596112-db1d6a7b8b8b?auto=format&fit=crop&w=900&q=85"
+    },
+
+    {
+        id: 6,
+        name: "Pearl Line",
+        price: 159,
+        category: "Boyunbağılar",
+        image: "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&w=900&q=85"
+    },
+
+    {
+        id: 7,
+        name: "Luna Earrings",
+        price: 109,
+        category: "Sırğalar",
+        image: "https://images.unsplash.com/photo-1635767798638-3e25273a8236?auto=format&fit=crop&w=900&q=85"
+    },
+
+    {
+        id: 8,
+        name: "Linea Bracelet",
+        price: 139,
+        category: "Bilərziklər",
+        image: "https://images.unsplash.com/photo-1573408301185-9146fe634ad0?auto=format&fit=crop&w=900&q=85"
+    }
+
+];
+
+
+/* SƏBƏT */
+
+let cart = [];
+
+
+/* SEÇİLMİŞLƏR */
+
+let favorites = [];
+
+
+/* MƏHSULLARI GÖSTƏR */
+
+function renderProducts() {
+
+    const container = document.getElementById("products");
+
+    const search =
+        document.getElementById("searchInput").value
+        .toLowerCase();
+
+    const category =
+        document.getElementById("categorySelect").value;
+
+
+    const filtered = products.filter(function(product) {
+
+        const nameMatch =
+            product.name.toLowerCase().includes(search);
+
+        const categoryMatch =
+            category === "Hamısı" ||
+            product.category === category;
+
+        return nameMatch && categoryMatch;
+
+    });
+
+
+    container.innerHTML = "";
+
+
+    if (filtered.length === 0) {
+
+        container.innerHTML = `
+            <p style="
+                grid-column:1/-1;
+                text-align:center;
+                padding:60px;
+                color:#777;
+            ">
+                Məhsul tapılmadı.
+            </p>
+        `;
+
+        return;
+    }
+
+
+    filtered.forEach(function(product) {
+
+        const liked =
+            favorites.includes(product.id);
+
+
+        container.innerHTML += `
+
+            <div class="product">
+
+                <div
+                    class="product-image"
+                    onclick="openProduct(${product.id})"
+                >
+
+                    <img
+                        src="${product.image}"
+                        alt="${product.name}"
+                    >
+
+                    <button
+                        class="heart"
+                        onclick="toggleFavorite(event, ${product.id})"
+                    >
+                        ${liked ? "♥" : "♡"}
+                    </button>
+
+                </div>
+
+                <div class="product-info">
+
+                    <div class="product-category">
+                        ${product.category}
+                    </div>
+
+                    <div class="product-name">
+                        ${product.name}
+                    </div>
+
+                    <div class="price">
+                        ${product.price} AZN
+                    </div>
+
+                    <button
+                        class="add"
+                        onclick="addToCart(${product.id})"
+                    >
+                        SƏBƏTƏ ƏLAVƏ ET
+                    </button>
+
+                </div>
+
+            </div>
+
+        `;
+
+    });
+
+}
+
+
+/* SƏBƏTƏ ƏLAVƏ */
+
+function addToCart(id) {
+
+    const existing =
+        cart.find(function(item) {
+            return item.id === id;
+        });
+
+
+    if (existing) {
+
+        existing.quantity++;
+
+    } else {
+
+        const product =
+            products.find(function(item) {
+                return item.id === id;
+            });
+
+        cart.push({
+            id: product.id,
+            name: product.name,
+            price: product.price,
+            image: product.image,
+            category: product.category,
+            quantity: 1
+        });
+
+    }
+
+
+    updateCart();
+    openCart();
+
+}
+
+
+/* SƏBƏTİ YENİLƏ */
+
+function updateCart() {
+
+    const list =
+        document.getElementById("cartList");
+
+
+    const count =
+        cart.reduce(function(total, item) {
+            return total + item.quantity;
+        }, 0);
+
+
+    document.getElementById("cartCount").textContent = count;
+
+
+    if (cart.length === 0) {
+
+        list.innerHTML = `
+            <div style="
+                text-align:center;
+                padding:60px 10px;
+                color:#777;
+                font-size:12px;
+            ">
+                Səbətiniz boşdur.
+            </div>
+        `;
+
+    } else {
+
+        list.innerHTML = "";
+
+
+        cart.forEach(function(item) {
+
+            list.innerHTML += `
+
+                <div class="cart-item">
+
+                    <img
+                        src="${item.image}"
+                        alt="${item.name}"
+                    >
+
+                    <div>
+
+                        <div class="cart-name">
+                            ${item.name}
+                        </div>
+
+                        <div class="cart-price">
+                            ${item.price} AZN
+                        </div>
+
+                        <div class="quantity">
+
+                            <button
+                                onclick="changeQuantity(${item.id}, -1)"
+                            >
+                                −
+                            </button>
+
+                            <span>${item.quantity}</span>
+
+                            <button
+                                onclick="changeQuantity(${item.id}, 1)"
+                            >
+                                +
+                            </button>
+
+                        </div>
+
+                        <button
+                            class="delete"
+                            onclick="removeItem(${item.id})"
+                        >
+                            SİL
+                        </button>
+
+                    </div>
+
+                </div>
+
+            `;
+
+        });
+
+    }
+
+
+    const total =
+        cart.reduce(function(sum, item) {
+            return sum + item.price * item.quantity;
+        }, 0);
+
+
+    document.getElementById("totalPrice").textContent =
+        total + " AZN";
+
+}
+
+
+/* SAYI DƏYİŞ */
+
+function changeQuantity(id, amount) {
+
+    const item =
+        cart.find(function(product) {
+            return product.id === id;
+        });
+
+
+    if (!item) return;
+
+
+    item.quantity += amount;
+
+
+    if (item.quantity <= 0) {
+
+        removeItem(id);
+
+    } else {
+
+        updateCart();
+
+    }
+
+}
+
+
+/* SİL */
+
+function removeItem(id) {
+
+    cart =
+        cart.filter(function(item) {
+            return item.id !== id;
+        });
+
+    updateCart();
+
+}
+
+
+/* SƏBƏTİ AÇ */
+
+function openCart() {
+    document
+        .getElementById("cartOverlay")
+        .classList.add("show");
+}
+
+
+/* SƏBƏTİ BAĞLA */
+
+function closeCart() {
+    document
+        .getElementById("cartOverlay")
+        .classList.remove("show");
+}
+
+
+/* SEÇİLMİŞ */
+
+function toggleFavorite(event, id) {
+
+    event.stopPropagation();
+
+
+    if (favorites.includes(id)) {
+
+        favorites =
+            favorites.filter(function(item) {
+                return item !== id;
+            });
+
+    } else {
+
+        favorites.push(id);
+
+    }
+
+
+    document.getElementById("favCount").textContent =
+        favorites.length;
+
+
+    renderProducts();
+
+}
+
+
+/* KATEQORİYA */
+
+function chooseCategory(category) {
+
+    document.getElementById("categorySelect").value =
+        category;
+
+
+    document
+        .getElementById("shop")
+        .scrollIntoView({
+            behavior: "smooth"
+        });
+
+
+    renderProducts();
+
+}
+
+
+/* MƏHSUL DETALI */
+
+function openProduct(id) {
+
+    const product =
+        products.find(function(item) {
+            return item.id === id;
+        });
+
+
+    if (!product) return;
+
+
+    document.getElementById("detailImg").src =
+        product.image;
+
+    document.getElementById("detailName").textContent =
+        product.name;
+
+    document.getElementById("detailCategory").textContent =
+        product.category;
+
+    document.getElementById("detailPrice").textContent =
+        product.price + " AZN";
+
+
+    document.getElementById("detailButton").onclick =
+        function() {
+
+            addToCart(product.id);
+            closeProduct();
+
+        };
+
+
+    document
+        .getElementById("productModal")
+        .classList.add("show");
+
+}
+
+
+function closeProduct() {
+
+    document
+        .getElementById("productModal")
+        .classList.remove("show");
+
+}
+
+
+/* CHECKOUT */
+
+function openCheckout() {
+
+    if (cart.length === 0) {
+
+        alert("Səbətiniz boşdur.");
+        return;
+
+    }
+
+
+    closeCart();
+
+
+    document
+        .getElementById("checkoutModal")
+        .classList.add("show");
+
+}
+
+
+function closeCheckout() {
+
+    document
+        .getElementById("checkoutModal")
+        .classList.remove("show");
+
+}
+
+
+/* SİFARİŞ */
+
+function submitOrder(event) {
+
+    event.preventDefault();
+
+
+    const number =
+        "BM-" +
+        Math.floor(
+            100000 + Math.random() * 900000
+        );
+
+
+    document.querySelector(".checkout").innerHTML = `
+
+        <div class="success">
+
+            <div style="
+                font-size:45px;
+                margin-bottom:20px;
+            ">
+                ✓
+            </div>
+
+            <h2>Sifarişiniz qəbul edildi.</h2>
+
+            <p style="
+                margin-top:15px;
+                color:#777;
+                font-size:12px;
+                line-height:1.8;
+            ">
+                Sifariş məlumatlarınız uğurla qəbul edildi.
+            </p>
+
+            <div class="order-number">
+                SİFARİŞ № ${number}
+            </div>
+
+            <button
+                class="confirm"
+                onclick="location.reload()"
+            >
+                MAĞAZAYA QAYIT
+            </button>
+
+        </div>
+
+    `;
+
+
+    cart = [];
+    updateCart();
+
+}
+
+
+/* AXTARIŞ */
+
+function openSearch() {
+
+    document
+        .getElementById("searchModal")
+        .classList.add("show");
+
+
+    setTimeout(function() {
+
+        document
+            .getElementById("searchModalInput")
+            .focus();
+
+    }, 100);
+
+}
+
+
+function closeSearch() {
+
+    document
+        .getElementById("searchModal")
+        .classList.remove("show");
+
+}
+
+
+function modalSearch() {
+
+    const value =
+        document.getElementById("searchModalInput").value;
+
+
+    document.getElementById("searchInput").value =
+        value;
+
+
+    renderProducts();
+
+}
+
+
+/* BAŞLANĞIC */
+
+renderProducts();
+updateCart();
+
+
+/* OVERLAY BAĞLAMA */
+
+document
+    .getElementById("cartOverlay")
+    .addEventListener("click", function(event) {
+
+        if (event.target === this) {
+            closeCart();
+        }
+
+    });
+
+
+document
+    .getElementById("productModal")
+    .addEventListener("click", function(event) {
+
+        if (event.target === this) {
+            closeProduct();
+        }
+
+    });
+
+
+document
+    .getElementById("checkoutModal")
+    .addEventListener("click", function(event) {
+
+        if (event.target === this) {
+            closeCheckout();
+        }
+
+    });
+
+
+document
+    .getElementById("searchModal")
+    .addEventListener("click", function(event) {
+
+        if (event.target === this) {
+            closeSearch();
+        }
+
+    });
+
+</script>
+
+</body>
+</html>
